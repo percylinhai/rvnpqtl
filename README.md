@@ -1,4 +1,4 @@
-# RV-NPL manual
+# RV-NPQTL manual
 
 ## Installation
 
@@ -16,18 +16,18 @@
 
 + boost_python
 
-The RV-NPL package is free and available on github.  Run the following commands to download and install the RV-NPL.
+The RV-NPQTL package is free and available on github.  Run the following commands to download and install the RV-NPQTL.
 
 ``` shell
-git clone https://github.com/percylinhai/rvnpl.git
-cd rvnpl
+git clone https://github.com/percylinhai/rvnpqtl.git
+cd rvnpqtl
 python setup.py install 
 ```
 
 If the program is installed correctly, you will see program options using the following command:
 
 ```shell
-rvnpl --help
+rvnpqtl --help
 ```
 
 
@@ -45,21 +45,21 @@ The pedigree file (PED file) is a white-space (space or tab) delimited file with
 + Paternal ID: 0 if not available 
 + Maternal ID: 0 if not available 
 + Sex:  1=male, 2=female   
-+ Phenotype: 1=unaffected, 2=affected
++ Phenotype: standardized quantitative trait values
 
 An example pedigree file is given below:
 
 ```
-11000 11000.fa 0 0 1 1
-11000 11000.mo 0 0 2 1
-11000 11000.p1 11000.fa 11000.mo 1 2
-11000 11000.s1 11000.fa 11000.mo 2 1
-11001 11001.fa 0 0 1 1
-11001 11001.mo 0 0 2 1
-11001 11001.p1 11001.fa 11001.mo 1 2
-11002 11002.fa 0 0 1 1
-11002 11002.mo 0 0 2 1
-11002 11002.p1 11002.fa 11002.mo 2 2
+11000 11000.fa 0 0 1 0.1
+11000 11000.mo 0 0 2 1.1
+11000 11000.p1 11000.fa 11000.mo 1 0.8
+11000 11000.s1 11000.fa 11000.mo 2 -0.2
+11001 11001.fa 0 0 1 0.4
+11001 11001.mo 0 0 2 -0.3
+11001 11001.p1 11001.fa 11001.mo 1 1.4
+11002 11002.fa 0 0 1 -1.1
+11002 11002.mo 0 0 2 0.7
+11002 11002.p1 11002.fa 11002.mo 2 0.5
 ```
 #### Zipped and tabixed VCF file
 The VCF file should contain variants for individuals corresponding to the PED file.
@@ -138,7 +138,7 @@ Example commands are shown below:
 
 ```shell
 cd example
-rvnpl collapse --fam 100extend_01.ped --vcf A1BG/rep1.vcf.gz --output ./rep1 --freq EVSMAF -c 0.01 --rvhaplo --include_vars A1BG.txt 
+rvnpqtl collapse --fam 100extend_01.ped --vcf A1BG/rep1.vcf.gz --output ./rep1 --freq EVSMAF -c 0.01 --rvhaplo --include_vars A1BG.txt 
 ```
 
 ### Options for npl analysis
@@ -173,7 +173,7 @@ Options for calculating p-values:
 Example commands are shown below:
 
 ```shell
-rvnpl npl --path ./rep1 --output ./rep1 --exact --info_only --perfect --sall --rvibd --n_jobs 8 -c 0.001 --rep 2000000
+rvnpqtl npl --path ./rep1 --output ./rep1 --exact --info_only --perfect --sall --rvibd --n_jobs 8 -c 0.001 --rep 2000000
 
 ```
 
