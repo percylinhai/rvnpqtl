@@ -165,15 +165,13 @@ Options for calculating p-values:
   --perfect_max N       maximum for inheritance vector iterations
   --info_only           include only informative families
   --perfect             use perfect data approximation in calculating Z-score
-  --kc                  use Kong&Cox(1997) extension for analytical p-values
-  --sall                enable calculation of NPL-all
   --rvibd               calculate IBD for RV only
 ```
 
 Example commands are shown below:
 
 ```shell
-rvnpqtl npl --path ./rep1 --output ./rep1 --exact --info_only --perfect --sall --rvibd --n_jobs 8 -c 0.001 --rep 2000000
+rvnpqtl npl --path ./rep1 --output ./rep1 --exact --info_only --perfect --rvibd --n_jobs 8 -c 0.001 --rep 2000000
 
 ```
 
